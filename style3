@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Collaborative Document Editor</title>
+      <style>
+        * { box-sizing: border-box; }
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: "Poppins", sans-serif;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          color: white;
+        }
+        h1 {
+          font-size: 26px;
+          margin-bottom: 20px;
+          letter-spacing: 1px;
+        }
+        textarea {
+          width: 80%;
+          height: 300px;
+          background: #fff;
+          border: none;
+          border-radius: 12px;
+          padding: 15px;
+          font-size: 16px;
+          color: #333;
+          outline: none;
+          resize: none;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;
+        }
+        textarea:focus {
+          box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        footer {
+          margin-top: 20px;
+          font-size: 14px;
+          opacity: 0.8;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>🚀 Real-Time Collaborative Editor</h1>
+      <textarea id="editor" placeholder="Start typing your document here..."></textarea>
+      <footer>All changes are updated instantly across users 🌐</footer>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        const socket = io();
+        const editor = document.getElementById("editor");
+        editor.addEventListener("input", () => {
+          socket.emit("textUpdate", editor.value);
+        });
+        socket.on("textUpdate", (data) => {
+          if (editor.value !== data) {
+            editor.value = data;
+          }
+        });
+      </script>
+    </body>
+    </html>
