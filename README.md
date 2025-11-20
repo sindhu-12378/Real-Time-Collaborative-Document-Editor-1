@@ -33,4 +33,4 @@ Event-driven architectures
 
 It can be extended to include features like user authentication, version history, document sharing, multiple rooms/documents, and rich-text formatting. The current version focuses on core real-time functionality, making it a strong foundation for a full collaborative document platform.
 
-Output :[](<img width="1316" height="705" alt="Image" src="https://github.com/user-attachments/assets/0700476f-559d-4e73-95e2-305889e4ca0a" />)
+Output : [](<img width="1080" height="651" alt="Image" src="https://github.com/user-attachments/assets/98227a15-d0d8-4409-a15f-d69320e8a972" />)
